@@ -1,0 +1,32 @@
+package network;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class Whater {
+    public static void main(String[] args) {
+        //  Scanner sc =new Scanner(System.in);
+        // System.out.println("enter site name to find all information about side");
+        //String u=sc.nextLine();
+        try{
+            URL url=new URL("https://api.openweathermap.org/data/2.5/weather?lat=23.912434&lon=75.787270&appid=338d41870bab91630e45bb5475060b80");
+
+            HttpURLConnection ht= (HttpURLConnection) url.openConnection();
+            ht.setRequestMethod("GET");
+            InputStreamReader in=new InputStreamReader(ht.getInputStream());
+            BufferedReader in1=new BufferedReader(in);
+            String st;
+            FileWriter obj=new FileWriter("NewFile.txt",true);
+            while((st=in1.readLine())!=null){
+
+
+                System.out.println(st);
+                obj.write(st);
+                 obj.flush();
+            }obj.close();
+            in1.close();
+            ht.disconnect();
+
+        }catch(Exception e){}
+    }
+}
