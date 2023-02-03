@@ -1,0 +1,67 @@
+package Project;
+import javax.swing.*;
+import java.awt.event.*;
+
+
+public class CurrencyConverter {
+  static   JFrame jf;static  JTextArea jta;static double a;static  JButton sb;static JLabel jl1;
+  static JComboBox jcb;
+    public void Cur(){
+        JLabel jlt=new JLabel("Enter your amount in rupee");
+        jlt.setBounds(100,150,400,50);
+        jf.add(jlt);
+      jta=new JTextArea();
+        jta.setBounds(100,200,200,20);
+        jf.add(jta);
+    }
+    public void Gui(){
+     jf=new JFrame("CURRENCY CONVERTER");
+    jf.setBounds(20,20,600,400);
+    jf.setLayout(null);
+    JLabel jl=new JLabel("CHOOSE YOU CHOICE FOR CURRENCY CONVERTER");
+    jl.setBounds(150,40,500,50);
+    jf.add(jl);
+
+    sb=new JButton("Submit");
+    sb.setBounds( 350,200,80,20);
+    jf.add(sb);
+   jl1=new JLabel();
+    jl1.setBounds(100,300,450,30);
+    jf.add(jl1);
+
+    String currency[]={"European Euro","Japanese Yen","British Pound ","Swiss Franc ",
+            "Canadian Dollar","Australian/New Zealand Dollar","Rupees"};
+    JComboBox <String> jcb=new JComboBox<>(currency);
+
+    jcb.setBounds(200,110,200,20);
+    jf.add(jcb);
+
+        ActionListener aa=new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                a=Double.parseDouble(jta.getText());
+                String choice=(String) jcb.getSelectedItem();
+                if(choice=="European Euro"){
+                jl1.setText(String.valueOf(a+ " "+"Indian rupee"+"="+ "European Euro" +" "+"€"+ " "+ a*.1125106382));}
+                else if (choice=="Japanese Yen"){jl1.setText(String.valueOf( a+ " "+"Indian rupee"+"="+
+                       "Japanese Yen" +" "+"¥"+ " "+a*.1595242986));}
+                else if (choice=="British Pound "){jl1.setText(String.valueOf(a+ " "+"Indian rupee"+"="+ "British Pound" +
+                        " "+"£"+ " " +a*.9922064699));}
+                else if (choice=="Swiss Franc "){jl1.setText(String.valueOf( a+ " "+"Indian rupee"+"="+
+                        "Swiss Franc " +" "+"₣"+ " "+ a*.1132447));}
+                else if (choice== "Canadian Dollar"){jl1.setText(String.valueOf(a+ " "+"Indian rupee"+"="+
+                        "Canadian Dollar" +" "+"$"+ " "+ a*.1641920456));}
+                else if (choice=="Australian/New Zealand Dollar"){jl1.setText(String.valueOf(a+ " "+"Indian rupee"+"="+
+                        "Australian/New Zealand Dollar" +" "+"AU$"+ " "+ a*.1739076));}
+                else{jl1.setText(String.valueOf(a+ " "+"Indian rupee"+"="+
+                        a+ " "+"Indian rupee" ));}
+            }
+        };sb.addActionListener(aa);
+    jf.setVisible(true);}
+    public static void main(String[] args) {
+     CurrencyConverter cc=new CurrencyConverter();
+        cc.Gui();
+     cc.Cur();
+
+    }
+}
