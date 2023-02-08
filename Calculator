@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+
 
 public class Guicalculator implements ActionListener {
     static  JFrame frm;
@@ -13,7 +13,7 @@ public class Guicalculator implements ActionListener {
 
     public static void main(String[] args) {
 
-        frm = new JFrame("Simple Calcultor");
+        frm = new JFrame("Calcultor");
         frm.setBounds(300,200,300,350);
         JLabel val = new JLabel("Value");
         val.setBounds(15,15,50,10);
@@ -26,7 +26,6 @@ public class Guicalculator implements ActionListener {
 
 
 
-        //p.setSize(400,200);
         JPanel p = new JPanel();
         p.setBounds(10,60,250,200);
         p.setLayout(new GridLayout(5,4,10,10));
@@ -52,7 +51,7 @@ public class Guicalculator implements ActionListener {
         mod = new JButton("%");
         del = new JButton("D");
         bt00 = new JButton("00");
-        // adding button to jframs
+       
 
         p.add(bt1);
         p.add(bt2);
@@ -74,18 +73,18 @@ public class Guicalculator implements ActionListener {
         p.add(clr);
         p.add(del);
         p.add(mod);
-//frm.add(p1);
+
 
         frm.add(p);
-        // setting the grid layout
+       
 
-        //p.setLayout(new GridLayout(4,4,10,10));
+    
         frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frm.setResizable(false);
 
         frm.setVisible(true);
 
-ActionListener clickeq = new ActionListener() {
+ActionListener aa = new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==bt1)
@@ -205,31 +204,30 @@ ActionListener clickeq = new ActionListener() {
 
     }
 };
-        bt1.addActionListener(clickeq);
-        bt2.addActionListener(clickeq);
-        bt3.addActionListener(clickeq);
-        bt4.addActionListener(clickeq);
-        bt5.addActionListener(clickeq);
-        bt6.addActionListener(clickeq);
-        bt7.addActionListener(clickeq);
-        bt8.addActionListener(clickeq);
-        bt9.addActionListener(clickeq);
-        bt0.addActionListener(clickeq);
-        dot.addActionListener(clickeq);
-        add.addActionListener(clickeq);
-        multi.addActionListener(clickeq);
-        div.addActionListener(clickeq);
-        sub.addActionListener(clickeq);
-        bteq.addActionListener(clickeq);
-        bt00.addActionListener(clickeq);
-        clr.addActionListener(clickeq);
-        mod.addActionListener(clickeq);
-        del.addActionListener(clickeq);
+        bt1.addActionListener(aa);
+        bt2.addActionListener(aa);
+        bt3.addActionListener(aa);
+        bt4.addActionListener(aa);
+        bt5.addActionListener(aa);
+        bt6.addActionListener(aa);
+        bt7.addActionListener(aa);
+        bt8.addActionListener(aa);
+        bt9.addActionListener(aa);
+        bt0.addActionListener(aa);
+        dot.addActionListener(aa);
+        add.addActionListener(aa);
+        multi.addActionListener(aa);
+        div.addActionListener(aa);
+        sub.addActionListener(aa);
+        bteq.addActionListener(aa);
+        bt00.addActionListener(aa);
+        clr.addActionListener(aa);
+        mod.addActionListener(aa);
+        del.addActionListener(aa);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-    }
-}
+}}
