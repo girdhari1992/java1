@@ -1,0 +1,41 @@
+package Guess;
+import java.util.*;
+public class Game {
+    public static void main(String[]args){
+        Generate g=new Generate();
+        g.guess();
+
+               }
+   }
+class Generate{
+
+    public int g(){
+       int num=(int)(Math.random()*100);
+
+return num;
+    }
+    public void guess(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Gusses the number between 0 to 100  you have five chance");
+        int b=g();
+        for(int i=0;i<5;i++){
+            int  a=sc.nextInt();
+            if(a==b){
+                System.out.println("you are right you won the game");
+                break;
+            }
+            else if (a<b){
+                System.out.println("your number is less than my number");
+            }
+            else{
+                System.out.println("your number is greater than my number");
+            }
+            System.out.println((4-i)+"  "+"chance is left");
+            if(i==4){
+                System.out.println(" sorry you loss the game try again");
+                System.out.println("my number is" +"  "+b);
+            }
+        }
+
+    }
+}
