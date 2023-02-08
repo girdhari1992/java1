@@ -1,0 +1,170 @@
+package Project;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+
+public class Login_RegSystem {
+
+    public static void main(String[] args) {
+
+        JFrame jfN=new JFrame("wellcome");
+        jfN.setLayout(null);
+        jfN.setSize(400,300);
+
+        JLabel lbn=new JLabel();
+        lbn.setBounds(150,100,500,20);
+        lbn.setText("WelCome On Home Page");
+        jfN.add(lbn);
+
+        JButton jbn=new JButton("Sign up");
+        jbn.setBackground(Color.GRAY);
+        jbn.setBounds(100,150,120,30);
+        jfN.add(jbn);
+
+        JButton jbn1=new JButton("Log in");
+        jbn1.setBackground(Color.GRAY);
+        jbn1.setBounds(250,150,120,30);
+        jfN.add(jbn1);
+
+
+
+        JFrame jf=new JFrame("Login Page");
+        jf.setSize(1000,1000);
+        jf.setLayout(null);
+
+        JLabel jl=new JLabel("Email");
+        jl.setBounds(100,60,120,20);
+        jf.add(jl);
+
+        JTextField jt=new JTextField();
+        jt.setBounds(135,60,200,30);
+        jf.add(jt);
+
+        JLabel jl2=new JLabel("Password");
+        jl2.setBounds(80,100,120,20);
+        jf.add(jl2);
+
+        JPasswordField jt2=new JPasswordField();
+        jt2.setBounds(140,100,200,30);
+        jf.add(jt2);
+
+        JLabel jl3=new JLabel("Conform Password");
+        jl3.setBounds(80,150,120,20);
+        jf.add(jl3);
+
+        JPasswordField jt3=new JPasswordField();
+        jt3.setBounds(200,150,200,30);
+        jf.add(jt3);
+
+        JButton jb=new JButton("Submit");
+        jb.setBackground(Color.GRAY);
+        jb.setBounds(150,250,120,30);
+        jf.add(jb);
+
+        JLabel lb3=new JLabel();
+        lb3.setBounds(140,200,500,20);
+        jf.add(lb3);
+
+        JFrame jfi=new JFrame("Login Page");
+        jfi.setSize(1000,1000);
+        jfi.setLayout(null);
+
+        JLabel jli=new JLabel("Email");
+        jli.setBounds(100,60,120,20);
+        jfi.add(jli);
+
+        JTextField jti=new JTextField();
+        jti.setBounds(135,60,200,30);
+        jfi.add(jti);
+
+        JLabel jl2i=new JLabel("Password");
+        jl2i.setBounds(80,100,120,20);
+        jfi.add(jl2i);
+
+        JPasswordField jt2i=new JPasswordField();
+        jt2i.setBounds(140,100,200,30);
+        jfi.add(jt2i);
+
+        JButton jbi=new JButton("Login");
+        jbi.setBackground(Color.GRAY);
+        jbi.setBounds(150,150,120,30);
+        jfi.add(jbi);
+        JLabel lb3i=new JLabel();
+        lb3i.setBounds(140,200,500,20);
+
+        jfi.add(lb3i);
+
+       // JLabel lb4=new JLabel();
+        //lb4.setBounds(140,200,500,20);
+       // jfi.add(lb4);
+
+        ActionListener al=new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {
+
+                jf.setVisible(true);
+
+                        }
+
+        };
+
+        ActionListener al1=new ActionListener(){
+            public void actionPerformed(ActionEvent e)
+            {  String st=jt.getText();
+                String st1=jt2.getText();
+                String st2= jt3.getText();
+                try{ FileWriter w=new FileWriter("MyFile.txt",true);
+
+                    w.write(st+" "+st1+"\n");
+                    w.flush();
+                    w.close();}catch(IOException p){
+                    System.out.println(e);}if(st1.equals(st2)){
+                lb3.setText("You sign up  successfully !");}
+                else{     lb3.setText("password does not same");}
+            }
+        };
+
+        ActionListener al2=new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                    File obj=new File("MyFile.txt");
+                 Scanner sc1=new Scanner(obj);
+                    String st=jti.getText();
+                    String st1=jt2i.getText();
+
+                   while(sc1.hasNextLine()){
+                    String data=sc1.nextLine();
+                       System.out.println(data);
+                       if(st.equals("")&&st1.equals("")){lb3i.setText("please enter email and password");}
+                      else{if(data.contains(st)&&data.contains(st1)){
+
+                           lb3i.setText("You logged in successfully !");
+                           System.out.println("trg");
+                      break; }
+                       else{lb3i.setText("Email and Password not match !");
+                           System.out.println("fg");}
+                    }}
+                }  catch(Exception l){
+                    System.out.println(l);}
+
+            }};
+
+        ActionListener ali=new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                try{
+                   jfi.setVisible(true);
+                }  catch(Exception l){
+                    System.out.println(l);}
+
+            }};
+
+        jbn.addActionListener(al);
+     jbn1.addActionListener(ali);
+        jb.addActionListener(al1);
+        jbi.addActionListener(al2);
+      jfN.setVisible(true);
+    }
+}
